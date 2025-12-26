@@ -1,0 +1,12 @@
+# robots.txt para Digitalencia
+# Permite que todos los motores de búsqueda indexen el sitio
+
+User-agent: *
+Allow: /
+
+# Bloquear directorios privados o administrativos
+Disallow: /api/
+Disallow: /cgi-bin/
+
+# Sitemap
+Sitemap: https://digitalencia.es/sitemap.xml

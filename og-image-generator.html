@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OG Image - Digitalencia</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #0f0f23;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 40px;
+    }
+
+    .wrapper {
+      text-align: center;
+    }
+
+    .info {
+      color: #fff;
+      margin-bottom: 30px;
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 1200px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .info h2 {
+      margin-bottom: 15px;
+      color: #4FC3F7;
+      font-size: 24px;
+    }
+
+    .info p {
+      line-height: 1.8;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .info code {
+      background: rgba(255,255,255,0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #4FC3F7;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* La imagen OG exactamente 1200x630 */
+    .og-canvas {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+    }
+
+    /* Patrón de puntos tecnológico */
+    .og-canvas::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.4;
+    }
+
+    /* Círculos decorativos */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+    }
+
+    .circle-1 {
+      width: 500px;
+      height: 500px;
+      top: -250px;
+      right: -150px;
+    }
+
+    .circle-2 {
+      width: 350px;
+      height: 350px;
+      bottom: -175px;
+      left: -100px;
+      background: radial-gradient(circle, rgba(79, 195, 247, 0.2), transparent);
+    }
+
+    .circle-3 {
+      width: 200px;
+      height: 200px;
+      top: 100px;
+      left: 100px;
+      background: radial-gradient(circle, rgba(255, 152, 0, 0.15), transparent);
+    }
+
+    /* Contenido principal */
+    .content {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+    }
+
+    .left-section {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .logo-section {
+      flex-shrink: 0;
+      margin-left: 60px;
+    }
+
+    .logo-section img {
+      width: 320px;
+      height: 320px;
+      filter: drop-shadow(0 15px 40px rgba(0,0,0,0.4));
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    h1 {
+      font-size: 82px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 25px rgba(0,0,0,0.4);
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+
+    .tagline {
+      font-size: 32px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 35px;
+      text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+      line-height: 1.3;
+    }
+
+    .badges {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .location-tag {
+      position: absolute;
+      bottom: 35px;
+      right: 60px;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 18px;
+      color: #fff;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Botones de acción */
+    .actions {
+      margin-top: 40px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4FC3F7, #039BE5);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(79, 195, 247, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .steps {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .steps ol {
+      margin-left: 20px;
+      line-height: 2;
+    }
+
+    .steps li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="info">
+      <h2>📸 Cómo guardar tu imagen Open Graph</h2>
+      <p><strong>Método recomendado:</strong> Haz clic derecho sobre la imagen de abajo → <code>Guardar imagen como...</code> → Guárdala como <code>og-image.jpg</code></p>
+      <div class="steps">
+        <ol>
+          <li>Haz clic derecho sobre la imagen de abajo</li>
+          <li>Selecciona "Guardar imagen como..." o "Save image as..."</li>
+          <li>Nómbrala exactamente: <code>og-image.jpg</code></li>
+          <li>Guárdala en la carpeta: <code>c:\Users\edgar\.gemini\antigravity\scratch\digitalencia\images\</code></li>
+          <li>Sube el archivo a tu servidor en: <code>https://digitalencia.es/images/og-image.jpg</code></li>
+        </ol>
+      </div>
+      <p style="margin-top: 15px; color: #4FC3F7;"><strong>💡 Tip:</strong> La imagen ya está configurada en 1200x630px (tamaño perfecto para Facebook, Twitter, LinkedIn)</p>
+    </div>
+
+    <div class="og-canvas" id="ogImage">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+      
+      <div class="content">
+        <div class="left-section">
+          <h1>Digitalencia</h1>
+          <div class="tagline">Transformación digital para empresas</div>
+          
+          <div class="badges">
+            <span class="badge">🤖 IA & Automatización</span>
+            <span class="badge">🌐 Desarrollo Web</span>
+            <span class="badge">📊 Analítica de Datos</span>
+          </div>
+        </div>
+        
+        <div class="logo-section">
+          <img src="images/logo-og.jpg" alt="Digitalencia Logo">
+        </div>
+        
+        <div class="location-tag">
+          📍 Valencia, España
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="saveAsImage()">💾 Guardar como imagen</button>
+      <a href="index.html" class="btn btn-secondary">← Volver a la web</a>
+    </div>
+  </div>
+
+  <script>
+    function saveAsImage() {
+      alert('Para guardar la imagen:\n\n1. Haz clic derecho sobre la imagen de arriba\n2. Selecciona "Guardar imagen como..."\n3. Guárdala como "og-image.jpg"\n4. Colócala en la carpeta images/ de tu proyecto\n\n¡Listo! La imagen ya tiene el tamaño perfecto de 1200x630px para redes sociales.');
+    }
+  </script>
+</body>
+</html>
