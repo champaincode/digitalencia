@@ -133,7 +133,7 @@ PROBLEMAS QUE RESOLVEMOS:
 
 CONTACTO:
 - Email: info@digitalencia.com
-- WhatsApp: +34 611 53 78 01 (https://wa.me/34611537801)
+- WhatsApp: +34 627 638 884 (https://wa.me/34627638884)
 - Ubicación: Valencia, España
 
 TU COMPORTAMIENTO:
@@ -174,7 +174,7 @@ async function getBotReply(userMessage) {
   // Verificar si la API key está configurada
   if (!OPENAI_API_KEY || OPENAI_API_KEY === "TU_CLAVE_API_AQUI") {
     return `⚠️ El chatbot necesita configuración. Por favor:<br><br>
-      • Contacta por <a href="https://wa.me/34611537801" target="_blank"><strong>WhatsApp</strong></a><br>
+      • Contacta por <a href="https://wa.me/34627638884" target="_blank"><strong>WhatsApp</strong></a><br>
       • O <button onclick='openCalendly()' style='background: linear-gradient(135deg, #22d3ee, #0f766e); color: #020617; border: none; padding: 8px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4);'>📅 Agenda una cita</button>`;
   }
 
@@ -228,7 +228,7 @@ async function getBotReply(userMessage) {
     // Respuesta de respaldo en caso de error
     return `😔 Disculpa, tengo problemas técnicos en este momento.<br><br>
       Puedes contactarnos directamente:<br>
-      • <a href="https://wa.me/34611537801" target="_blank"><strong>WhatsApp</strong></a><br>
+      • <a href="https://wa.me/34627638884" target="_blank"><strong>WhatsApp</strong></a><br>
       • <button onclick='openCalendly()' style='background: linear-gradient(135deg, #22d3ee, #0f766e); color: #020617; border: none; padding: 8px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4);'>📅 Agendar cita</button><br>
       • Email: <strong>info@digitalencia.com</strong>`;
   }
@@ -275,7 +275,7 @@ async function handleSend() {
 
     // Mostrar mensaje de error
     appendMessage(
-      `😔 Hubo un error. Por favor intenta de nuevo o contáctanos por <a href="https://wa.me/34611537801" target="_blank">WhatsApp</a>.`,
+      `😔 Hubo un error. Por favor intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank">WhatsApp</a>.`,
       "bot"
     );
   }

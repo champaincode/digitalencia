@@ -1,4 +1,4 @@
-// Efecto futurista: Digitalencia / Valencia solo en el título + subrayado animado
+﻿// Efecto futurista: Digitalencia / Valencia solo en el título + subrayado animado
 (function () {
   const main = document.getElementById("brandMain");
   const brandTitle = document.querySelector(".brand-title");
@@ -342,7 +342,7 @@ PROBLEMAS QUE RESOLVEMOS:
 
 CONTACTO:
 - Email: info@digitalencia.es
-- WhatsApp: +34 611 53 78 01 (https://wa.me/34611537801)
+- WhatsApp: +34 627 638 884 (https://wa.me/34627638884)
 - Ubicación: Valencia, España
 
 TU COMPORTAMIENTO:
@@ -434,7 +434,7 @@ Cuando sea apropiado sugerir cita, usa este formato HTML:
       // Respuesta de respaldo en caso de error
       return `😔 Disculpa, tengo problemas técnicos en este momento.<br><br>
       Puedes contactarnos directamente:<br>
-      • <a href="https://wa.me/34611537801" target="_blank"><strong>WhatsApp</strong></a><br>
+      • <a href="https://wa.me/34627638884" target="_blank"><strong>WhatsApp</strong></a><br>
       • <button onclick='openCalendly()' style='background: linear-gradient(135deg, #22d3ee, #0f766e); color: #020617; border: none; padding: 8px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4);'>📅 Agendar cita</button><br>
       • Email: <strong>info@digitalencia.es</strong>`;
     }
@@ -481,7 +481,7 @@ Cuando sea apropiado sugerir cita, usa este formato HTML:
 
       // Mostrar mensaje de error
       appendMessage(
-        `😔 Hubo un error. Por favor intenta de nuevo o contáctanos por <a href="https://wa.me/34611537801" target="_blank">WhatsApp</a>.`,
+        `😔 Hubo un error. Por favor intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank">WhatsApp</a>.`,
         "bot"
       );
     }
@@ -583,13 +583,13 @@ function openCalendly() {
       } else {
         // Error from server
         formStatus.className = 'form-status error show';
-        formStatus.innerHTML = '❌ ' + (data.message || 'Hubo un problema al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por <a href="https://wa.me/34611537801" target="_blank" style="color: #fca5a5; text-decoration: underline;">WhatsApp</a>.');
+        formStatus.innerHTML = '❌ ' + (data.message || 'Hubo un problema al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank" style="color: #fca5a5; text-decoration: underline;">WhatsApp</a>.');
       }
     } catch (error) {
       // Network error
       console.error('Error:', error);
       formStatus.className = 'form-status error show';
-      formStatus.innerHTML = '❌ Error de conexión. Por favor, verifica tu internet e intenta de nuevo o contáctanos por <a href="https://wa.me/34611537801" target="_blank" style="color: #fca5a5; text-decoration: underline;">WhatsApp</a>.';
+      formStatus.innerHTML = '❌ Error de conexión. Por favor, verifica tu internet e intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank" style="color: #fca5a5; text-decoration: underline;">WhatsApp</a>.';
     } finally {
       // Re-enable button and remove loading state
       submitBtn.disabled = false;
@@ -599,7 +599,7 @@ function openCalendly() {
 })();
 
 // ========================================
-// GESTI�N DE COOKIES RGPD
+// GESTI�N DE COOKIES RGPD
 // ========================================
 
 (function() {
@@ -630,7 +630,7 @@ function openCalendly() {
   if (!cookieBanner || !acceptBtn || !rejectBtn) return;
 
   if (!getCookie(COOKIE_NAME)) {
-    // Mostrar banner despu�s de un peque�o delay
+    // Mostrar banner despu�s de un peque�o delay
     setTimeout(() => {
       cookieBanner.classList.add('show');
     }, 1000);
