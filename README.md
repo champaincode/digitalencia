@@ -17,7 +17,7 @@ Ofrecer una **landing page profesional** para presentar Digitalencia (servicios,
 - **Frontend estático** (HTML + CSS + JavaScript) sin build step.
 - Estructura clara por carpetas (`css/`, `js/`, `images/`, `favicon/`).
 - **SEO básico listo**: `robots.txt` y `sitemap.xml`.
-- Página de **Política de Privacidad** (`privacidad.html`).
+- Página de **Política de Privacidad** (`privacidad/`).
 - Script de **integración** (`chatgpt-integration.js`) para funciones/UX relacionadas con IA (según configuración).
 - Utilidad para generar recursos de vista previa social: `og-image-generator.html`.
 
@@ -35,6 +35,7 @@ Ofrecer una **landing page profesional** para presentar Digitalencia (servicios,
 ├─ index.html              # Landing principal
 ├─ chatgpt-integration.js  # Integración/UX para IA (cliente)
 ├─ og-image-generator.html # Generador de imagen OG (utilidad)
-├─ privacidad.html         # Política de Privacidad
+├─ privacidad/             # Política de Privacidad (index.html, carpeta)
 ├─ robots.txt              # Robots
 └─ sitemap.xml             # Sitemap
+```

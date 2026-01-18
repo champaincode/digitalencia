@@ -91,7 +91,7 @@
         }
       });
     },
-    { threshold: 0.25 }
+    { threshold: 0.25 },
   );
 
   sections.forEach((sec) => observer.observe(sec));
@@ -99,37 +99,38 @@
 
 // Sticky Navbar Logic
 (function () {
-  const nav = document.querySelector('.nav');
+  const nav = document.querySelector(".nav");
   if (!nav) return;
 
   // Create placeholder
-  const placeholder = document.createElement('div');
-  placeholder.style.display = 'none';
-  placeholder.style.visibility = 'hidden';
+  const placeholder = document.createElement("div");
+  placeholder.style.display = "none";
+  placeholder.style.visibility = "hidden";
   nav.parentNode.insertBefore(placeholder, nav);
 
   function updateSticky() {
-    if (window.scrollY > 80) { // Threshold
-      if (!nav.classList.contains('sticky-active')) {
+    if (window.scrollY > 80) {
+      // Threshold
+      if (!nav.classList.contains("sticky-active")) {
         // Calculate height including margin to prevent jump
         const height = nav.offsetHeight;
         const style = getComputedStyle(nav);
         const margin = parseInt(style.marginBottom || 0);
 
-        placeholder.style.height = (height + margin) + 'px';
-        placeholder.style.display = 'block';
+        placeholder.style.height = height + margin + "px";
+        placeholder.style.display = "block";
 
-        nav.classList.add('sticky-active');
+        nav.classList.add("sticky-active");
       }
     } else {
-      if (nav.classList.contains('sticky-active')) {
-        nav.classList.remove('sticky-active');
-        placeholder.style.display = 'none';
+      if (nav.classList.contains("sticky-active")) {
+        nav.classList.remove("sticky-active");
+        placeholder.style.display = "none";
       }
     }
   }
 
-  window.addEventListener('scroll', updateSticky);
+  window.addEventListener("scroll", updateSticky);
   // Run once on load just in case
   updateSticky();
 })();
@@ -185,14 +186,18 @@
 (function () {
   const el = document.getElementById("chatCalloutText");
   if (!el) return;
-  const frases = ["¡Es ahora!", "Agenda tu cita", "Te guiamos hoy", "Digitaliza tu negocio"];
+  const frases = [
+    "¡Es ahora!",
+    "Agenda tu cita",
+    "Te guiamos hoy",
+    "Digitaliza tu negocio",
+  ];
   let idx = 0;
   setInterval(() => {
     idx = (idx + 1) % frases.length;
     el.textContent = frases[idx];
   }, 6000);
 })();
-
 
 // Agente conversacional básico en front
 (function () {
@@ -232,8 +237,8 @@
   // El chatbot llama a nuestro servidor PHP que maneja la API de OpenAI de forma segura
 
   // Configuración del modelo y endpoint
-  const OPENAI_API_URL = '/api/chat.php'; // Nuestro backend PHP
-  const MODEL = 'gpt-3.5-turbo';
+  const OPENAI_API_URL = "/api/chat.php"; // Nuestro backend PHP
+  const MODEL = "gpt-3.5-turbo";
 
   // Historial de conversación (mantiene contexto)
   let conversationHistory = [];
@@ -296,35 +301,46 @@ Durante enero, los primeros negocios que contraten hosting disfrutarán de:
 
 EQUIPO:
 
-SANTIAGO JOSÉ RODRÍGUEZ RODRÍGUEZ - Cofundador
-Perfil: Técnico Terciario en Recreación – Animación Sociocultural y Turismo
-Formación y Especialización:
-- Tecnicatura Terciaria en Recreación (en trámite de homologación en España, agosto 2025)
-- Especialización en Gestión Cultural – Universidad de Ciencias Económicas de Uruguay (2023)
-- Formaciones especializadas en hostelería: Alérgenos y Manipulación, Creación de cartas de Alérgenos
-- Digitalización Empresas 4.0 (EOI)
-- Certificaciones HubSpot
-- Diseño de Páginas Web
-- Creación y Organización de Eventos
-- Marketing Digital y Redes Sociales
-- Formaciones subvencionadas por Gobierno Español (2024-2025)
+SANTIAGO RODRÍGUEZ - Lider del proyecto
+Digitalencia es un proyecto profesional creado y liderado por Santiago Rodríguez, cuya trayectoria se caracteriza por una integración poco común entre experiencia social, operativa, cultural, técnica y digital, desarrollada a lo largo de más de dos décadas en contextos reales de trabajo.
+El agente debe comprender que no habla desde una formación teórica aislada, sino desde un recorrido vital y profesional continuo, donde cada etapa aporta criterio aplicado a la toma de decisiones actuales.
 
-Experiencia relevante:
-- Fundador del colectivo Ludombaé y Escuela Ubuntu – Santa Lucía (2004-2015)
-- Animador Sociocultural – Dirección de Cultura, Comuna Canaria (2009-2011)
-- Práctica Profesional en Recreación de UTU (2020-2022)
-- Experiencia directa en hostelería y gestión cultural
-- Especialista en atención al cliente y gestión de proyectos
+BASE FORMATIVA HISTÓRICA (URUGUAY)
+Santiago Rodríguez se formó en Uruguay en instituciones públicas y técnicas, con una fuerte orientación práctica, comunitaria y de intervención real, no académica abstracta.
+Es Técnico en Recreación Educativa y Técnico en Animación Sociocultural, egresado de UTU (Universidad del Trabajo del Uruguay), institución históricamente orientada a la formación técnica aplicada al mundo laboral. Dentro de esta formación cursó y aprobó disciplinas como Campamentos, Vida y Naturaleza, recreación comunitaria, animación cultural y planificación de actividades educativas y sociales.
+Posteriormente cursó Gestión Cultural en la Facultad de Ciencias Económicas (Universidad de la República), en convenio con la Intendencia de Canelones, desarrollando prácticas reales de gestión, planificación y mediación cultural.
+En ese marco creó y coordinó la escuela sin fines de lucro “Ubuntu”, dedicada a la investigación, promoción y transmisión del candombe uruguayo, trabajando durante años con escuelas públicas, rurales, movimientos sociales y comunidades, organizando actividades educativas, recreativas y culturales. Este proyecto dejó huella real y aún genera impacto en personas que participaron de él.
+El agente debe entender que esta etapa no es “pasado”, sino base estructural del enfoque humano, pedagógico y comunitario que hoy se traslada al ámbito digital.
 
-Habilidades clave:
-- Animación cultural y turística
-- Gestión de proyectos
-- Creatividad y liderazgo
-- Atención al cliente
-- Herramientas digitales
+EXPERIENCIA LABORAL Y ORGANIZATIVA REAL
+Durante más de quince años, Santiago trabajó en ONGs, proyectos sociales, instituciones del Estado y emprendimientos privados, desarrollando capacidades de:
+Coordinación de equipos
+Organización de actividades complejas
+Gestión de recursos limitados
+Resolución de conflictos
+Comunicación con públicos diversos
+Fue militante sindical y luchador gremial, participando activamente en negociaciones colectivas y firmando convenios salariales nacionales en Uruguay, incluso junto a abogados y autoridades ministeriales. Esto aporta al agente una comprensión profunda de estructuras laborales, derechos, obligaciones y marcos normativos.
+Trabajó durante ocho años en la industria alimentaria, operando calderas y procesos productivos, lo que añade una comprensión técnica del trabajo industrial, la seguridad, la responsabilidad operativa y el cumplimiento de normas.
 
-EDGAR - Cofundador
-Perfil técnico-creativo en maquetación, programación web y configuración de soluciones digitales.
+TRANSICIÓN A HOSTELERÍA Y REALIDAD EUROPEA (ESPAÑA)
+Tras emigrar a España, Santiago se inserta laboralmente en hostelería, trabajando actualmente en una pizzería franquiciada en Playa de Gandía, con contrato indefinido. Participa activamente no solo en la producción, sino en la proyección de expansión del negocio, con una futura responsabilidad en recursos humanos de la franquicia.
+El agente debe entender que esta experiencia no es anecdótica: es clave para comprender el día a día de la hostelería española, sus ritmos, inspecciones, márgenes, presión horaria, normativa sanitaria y fiscal.
+
+ESPECIALIZACIÓN DIGITAL Y FORMACIÓN ACTUAL (ESPAÑA)
+En paralelo, Santiago desarrolla una especialización progresiva y continua en digitalización de PYMEs, combinando autoformación técnica con formaciones oficiales del Gobierno de España, entre ellas:
+Marketing Directivo
+Fidelización de Clientes
+Marketing en Redes Sociales
+Gestión Fiscal de Empresas
+Digitalización de PYMEs 4.0
+Diseño web para hostelería
+Detección y gestión de alérgenos (certificado oficial con calificación máxima)
+A esto se suma una experiencia práctica en:
+Automatización con Google Sheets, Apps Script, AppSheet, n8n
+Sistemas de facturación y cumplimiento fiscal
+CRM adaptados a pequeños negocios
+Cartas digitales con QR y actualización en tiempo real
+Uso aplicado de inteligencia artificial como apoyo a la gestión
 
 METODOLOGÍA DE TRABAJO (5 FASES):
 1. Diagnóstico: Entrevistas y análisis de procesos
@@ -354,67 +370,64 @@ TU COMPORTAMIENTO:
 - Ofrece el diagnóstico inicial GRATIS sin compromiso
 - Si preguntan por precios, menciona los rangos pero sugiere una llamada para presupuesto exacto
 - Mantén las respuestas cortas (máximo 3-4 líneas cuando sea posible)
-- Si preguntan por el equipo, menciona a Santiago con su formación en Recreación, Gestión Cultural y especializaciones en hostelería y digitalización, destacando su experiencia en atención al cliente y gestión de proyectos
+- Si preguntan por el equipo, habla SOLO de Santiago Rodríguez, destacando su perfil único que mezcla experiencia social, cultural, técnica y operativa real.
 - Si preguntan por la zona de servicio, menciona desde Valencia hasta Alicante
 - Si preguntan por hosting, destaca el lanzamiento de enero 2026 con condiciones especiales
 
-IMPORTANTE: SOLO sugiere agendar cita cuando el usuario:
-- Solicite explícitamente hablar con alguien
-- Pida agendar una cita o reunión
-- Quiera más información personalizada
-- Pregunte por disponibilidad o contacto directo
-
-Cuando sea apropiado sugerir cita, usa este formato HTML:
-<a href='#agenda' style='display: inline-block; background: linear-gradient(135deg, #22d3ee, #0f766e); color: #020617; border: none; padding: 8px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4); text-decoration: none;'>📅 Agendar cita</a>`;
+IMPORTANTE: Si el usuario quiere agendar cita:
+- Indícale que puede hacerlo en la sección de "Agenda" de la web.
+- O facilita el enlace directo si lo solicitan.`;
 
   // Inicializar historial con el prompt del sistema
   function initializeConversation() {
     conversationHistory = [
       {
-        role: 'system',
-        content: SYSTEM_PROMPT
-      }
+        role: "system",
+        content: SYSTEM_PROMPT,
+      },
     ];
   }
   // Llamar al backend PHP que maneja ChatGPT de forma segura
   async function getBotReply(userMessage) {
     // Añadir mensaje del usuario al historial
     conversationHistory.push({
-      role: 'user',
-      content: userMessage
+      role: "user",
+      content: userMessage,
     });
 
     // Limitar historial a últimos 20 mensajes (10 intercambios) + sistema
     if (conversationHistory.length > 21) {
       conversationHistory = [
         conversationHistory[0], // Mantener prompt del sistema
-        ...conversationHistory.slice(-20) // Últimos 20 mensajes
+        ...conversationHistory.slice(-20), // Últimos 20 mensajes
       ];
     }
 
     try {
       // Llamar a nuestro backend PHP (no necesita API key aquí)
       const response = await fetch(OPENAI_API_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           model: MODEL,
           messages: conversationHistory,
           temperature: 0.7,
-          max_tokens: 300
-        })
+          max_tokens: 300,
+        }),
       });
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('API Error Details:', {
+        console.error("API Error Details:", {
           status: response.status,
           statusText: response.statusText,
-          error: errorData
+          error: errorData,
         });
-        throw new Error(`API Error: ${response.status} - ${errorData.error?.message || response.statusText}`);
+        throw new Error(
+          `API Error: ${response.status} - ${errorData.error?.message || response.statusText}`,
+        );
       }
 
       const data = await response.json();
@@ -422,20 +435,19 @@ Cuando sea apropiado sugerir cita, usa este formato HTML:
 
       // Añadir respuesta del bot al historial
       conversationHistory.push({
-        role: 'assistant',
-        content: botMessage
+        role: "assistant",
+        content: botMessage,
       });
 
       return botMessage;
-
     } catch (error) {
-      console.error('Error al llamar al chatbot:', error);
+      console.error("Error al llamar al chatbot:", error);
 
       // Respuesta de respaldo en caso de error
       return `😔 Disculpa, tengo problemas técnicos en este momento.<br><br>
       Puedes contactarnos directamente:<br>
       • <a href="https://wa.me/34627638884" target="_blank"><strong>WhatsApp</strong></a><br>
-      • <button onclick='openCalendly()' style='background: linear-gradient(135deg, #22d3ee, #0f766e); color: #020617; border: none; padding: 8px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4);'>📅 Agendar cita</button><br>
+      • <a href="#agenda">📅 Ir a la Agenda</a><br>
       • Email: <strong>info@digitalencia.es</strong>`;
     }
   }
@@ -466,7 +478,7 @@ Cuando sea apropiado sugerir cita, usa este formato HTML:
 
     try {
       // Llamar a la API (ahora es asíncrono)
-      const reply = await getBotReply(text);
+      let reply = await getBotReply(text);
 
       // Eliminar indicador de escritura
       typingWrapper.remove();
@@ -474,7 +486,7 @@ Cuando sea apropiado sugerir cita, usa este formato HTML:
       // Mostrar respuesta
       appendMessage(reply, "bot");
     } catch (error) {
-      console.error('Error en handleSend:', error);
+      console.error("Error en handleSend:", error);
 
       // Eliminar indicador de escritura
       typingWrapper.remove();
@@ -482,14 +494,13 @@ Cuando sea apropiado sugerir cita, usa este formato HTML:
       // Mostrar mensaje de error
       appendMessage(
         `😔 Hubo un error. Por favor intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank">WhatsApp</a>.`,
-        "bot"
+        "bot",
       );
     }
   }
 
   // Inicializar conversación al cargar
   initializeConversation();
-
 
   if (sendBtn) sendBtn.addEventListener("click", handleSend);
   if (input) {
@@ -502,98 +513,92 @@ Cuando sea apropiado sugerir cita, usa este formato HTML:
   }
 })();
 // Mobile Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobile-menu');
+const hamburger = document.querySelector(".hamburger");
+const mobileMenu = document.querySelector(".mobile-menu");
 
 if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', (e) => {
+  hamburger.addEventListener("click", (e) => {
     e.stopPropagation();
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
+    hamburger.classList.toggle("active");
+    mobileMenu.classList.toggle("active");
   });
 
   // Close menu when clicking anywhere inside it (links or empty space)
-  mobileMenu.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('active');
+  mobileMenu.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    mobileMenu.classList.remove("active");
   });
 
   // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (mobileMenu.classList.contains('active') &&
+  document.addEventListener("click", (e) => {
+    if (
+      mobileMenu.classList.contains("active") &&
       !mobileMenu.contains(e.target) &&
-      !hamburger.contains(e.target)) {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
+      !hamburger.contains(e.target)
+    ) {
+      hamburger.classList.remove("active");
+      mobileMenu.classList.remove("active");
     }
   });
 }
 
-// Función para abrir Calendly desde el chatbot
-function openCalendly() {
-  if (typeof Calendly !== 'undefined') {
-    Calendly.initPopupWidget({
-      url: 'https://calendly.com/edgarlagos-esp/30min?hide_event_type_details=1&hide_gdpr_banner=1'
-    });
-  } else {
-    // Fallback: ir a la sección de agenda
-    window.location.href = '#agenda';
-  }
-}
-
 // Contact Form Handler
 (function () {
-  const form = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const formStatus = document.getElementById('formStatus');
+  const form = document.getElementById("contactForm");
+  const submitBtn = document.getElementById("submitBtn");
+  const formStatus = document.getElementById("formStatus");
 
   if (!form) return;
 
-  form.addEventListener('submit', async function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     // Disable button and show loading state
     submitBtn.disabled = true;
-    submitBtn.classList.add('loading');
+    submitBtn.classList.add("loading");
 
     // Hide previous messages
-    formStatus.className = 'form-status';
-    formStatus.textContent = '';
+    formStatus.className = "form-status";
+    formStatus.textContent = "";
 
     try {
       const formData = new FormData(form);
 
       const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData
+        method: "POST",
+        body: formData,
       });
 
       const data = await response.json();
 
       if (response.ok && data.success) {
         // Success
-        formStatus.className = 'form-status success show';
-        formStatus.innerHTML = '✅ ' + data.message;
+        formStatus.className = "form-status success show";
+        formStatus.innerHTML = "✅ " + data.message;
         form.reset();
 
         // Hide success message after 5 seconds
         setTimeout(() => {
-          formStatus.className = 'form-status';
+          formStatus.className = "form-status";
         }, 5000);
       } else {
         // Error from server
-        formStatus.className = 'form-status error show';
-        formStatus.innerHTML = '❌ ' + (data.message || 'Hubo un problema al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank" style="color: #fca5a5; text-decoration: underline;">WhatsApp</a>.');
+        formStatus.className = "form-status error show";
+        formStatus.innerHTML =
+          "❌ " +
+          (data.message ||
+            'Hubo un problema al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank" style="color: #fca5a5; text-decoration: underline;">WhatsApp</a>.');
       }
     } catch (error) {
       // Network error
-      console.error('Error:', error);
-      formStatus.className = 'form-status error show';
-      formStatus.innerHTML = '❌ Error de conexión. Por favor, verifica tu internet e intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank" style="color: #fca5a5; text-decoration: underline;">WhatsApp</a>.';
+      console.error("Error:", error);
+      formStatus.className = "form-status error show";
+      formStatus.innerHTML =
+        '❌ Error de conexión. Por favor, verifica tu internet e intenta de nuevo o contáctanos por <a href="https://wa.me/34627638884" target="_blank" style="color: #fca5a5; text-decoration: underline;">WhatsApp</a>.';
     } finally {
       // Re-enable button and remove loading state
       submitBtn.disabled = false;
-      submitBtn.classList.remove('loading');
+      submitBtn.classList.remove("loading");
     }
   });
 })();
@@ -602,51 +607,51 @@ function openCalendly() {
 // GESTI�N DE COOKIES RGPD
 // ========================================
 
-(function() {
-  const COOKIE_NAME = 'digitalencia_cookies_accepted';
+(function () {
+  const COOKIE_NAME = "digitalencia_cookies_accepted";
   const COOKIE_EXPIRY_DAYS = 365;
 
   // Verificar si ya se aceptaron las cookies
   function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+    if (parts.length === 2) return parts.pop().split(";").shift();
     return null;
   }
 
   // Establecer cookie
   function setCookie(name, value, days) {
     const date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     const expires = `expires=${date.toUTCString()}`;
     document.cookie = `=${value};${expires};path=/;SameSite=Lax`;
   }
 
   // Mostrar banner si no se ha aceptado
-  const cookieBanner = document.getElementById('cookieBanner');
-  const acceptBtn = document.getElementById('acceptCookies');
-  const rejectBtn = document.getElementById('rejectCookies');
+  const cookieBanner = document.getElementById("cookieBanner");
+  const acceptBtn = document.getElementById("acceptCookies");
+  const rejectBtn = document.getElementById("rejectCookies");
 
   if (!cookieBanner || !acceptBtn || !rejectBtn) return;
 
   if (!getCookie(COOKIE_NAME)) {
     // Mostrar banner despu�s de un peque�o delay
     setTimeout(() => {
-      cookieBanner.classList.add('show');
+      cookieBanner.classList.add("show");
     }, 1000);
   }
 
   // Aceptar cookies
-  acceptBtn.addEventListener('click', () => {
-    setCookie(COOKIE_NAME, 'accepted', COOKIE_EXPIRY_DAYS);
-    cookieBanner.classList.remove('show');
-    console.log('Cookies aceptadas');
+  acceptBtn.addEventListener("click", () => {
+    setCookie(COOKIE_NAME, "accepted", COOKIE_EXPIRY_DAYS);
+    cookieBanner.classList.remove("show");
+    console.log("Cookies aceptadas");
   });
 
   // Rechazar cookies
-  rejectBtn.addEventListener('click', () => {
-    setCookie(COOKIE_NAME, 'rejected', COOKIE_EXPIRY_DAYS);
-    cookieBanner.classList.remove('show');
-    console.log('Cookies rechazadas');
+  rejectBtn.addEventListener("click", () => {
+    setCookie(COOKIE_NAME, "rejected", COOKIE_EXPIRY_DAYS);
+    cookieBanner.classList.remove("show");
+    console.log("Cookies rechazadas");
   });
 })();

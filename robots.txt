@@ -1,8 +1,14 @@
 # robots.txt para Digitalencia
 # Permite que todos los motores de búsqueda indexen el sitio
 
-User-agent: *
+User-agent: GPTBot
 Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: *
+Disallow:
 
 # Bloquear directorios privados o administrativos
 Disallow: /api/
