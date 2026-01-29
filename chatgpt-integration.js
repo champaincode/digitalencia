@@ -7,7 +7,7 @@
 const OPENAI_API_KEY = "TU_CLAVE_API_AQUI"; // ⚠️ IMPORTANTE: Reemplaza esto con tu API key de OpenAI
 
 // Configuración del modelo y endpoint
-const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
+const OPENAI_API_URL = "api/chat.php";
 const MODEL = "gpt-3.5-turbo";
 
 // Historial de conversación (mantiene contexto)

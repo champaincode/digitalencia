@@ -1,6 +1,7 @@
 <?php
 // Permitir CORS desde tu subdominio
-header('Access-Control-Allow-Origin: https://digitalencia.es');// Cambia * por https://dev.tudominio.com en producción
+// Permitir CORS (Temporizado a * para evitar errores de dominio, luego puedes restringirlo)
+header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json');
@@ -70,11 +71,48 @@ if (!isset($input['messages'])) {
 
 // Preparar la llamada a OpenAI
 $data = [
-    'model' => $input['model'] ?? 'gpt-3.5-turbo',
+    'model' => $input['model'] ?? 'gpt-4o-mini',
     'messages' => $input['messages'],
     'temperature' => $input['temperature'] ?? 0.7,
     'max_tokens' => $input['max_tokens'] ?? 300
 ];
+
+// --- INICIO LÓGICA DE BASE DE CONOCIMIENTO (KNOWLEDGE BASE) ---
+$knowledgeDir = __DIR__ . '/../knowledge';
+$knowledgeContent = "";
+
+if (is_dir($knowledgeDir)) {
+    $files = scandir($knowledgeDir);
+    foreach ($files as $file) {
+        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        if (in_array($ext, ['md', 'txt', 'json'])) {
+            $content = @file_get_contents($knowledgeDir . '/' . $file);
+            if ($content !== false) {
+                $knowledgeContent .= "\n\n--- INFORMACIÓN DE ARCHIVO: $file ---\n" . $content;
+            }
+        }
+    }
+}
+
+if (!empty($knowledgeContent)) {
+    $knowledgeInjected = false;
+    // Buscar si ya existe un mensaje de sistema para adjuntar la info
+    foreach ($data['messages'] as &$msg) {
+        if ($msg['role'] === 'system') {
+            $msg['content'] .= "\n\n BASE DE CONOCIMIENTO ADICIONAL:" . $knowledgeContent;
+            $knowledgeInjected = true;
+            break;
+        }
+    }
+    // Si no hay mensaje de sistema, crear uno nuevo al principio
+    if (!$knowledgeInjected) {
+        array_unshift($data['messages'], [
+            'role' => 'system',
+            'content' => "BASE DE CONOCIMIENTO ADICIONAL:" . $knowledgeContent
+        ]);
+    }
+}
+// --- FIN LÓGICA DE BASE DE CONOCIMIENTO ---
 
 // Hacer la llamada a OpenAI usando cURL
 $ch = curl_init('https://api.openai.com/v1/chat/completions');

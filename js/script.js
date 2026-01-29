@@ -672,14 +672,15 @@ if (hamburger && mobileMenu) {
 window.addEventListener("load", () => {
     const preloader = document.getElementById("preloader");
     if (preloader) {
-        // Esperar un poco para asegurar que la animacin de "llenado" (2.5s) sea visible
-        // o al menos dar 2 segundos de cortesa
+        // Esperar 1 segundo para visualización óptima
         setTimeout(() => {
             preloader.classList.add("fade-out");
             // Remover del DOM despus del fade-out
             setTimeout(() => {
                 preloader.remove();
             }, 600);
-        }, 2200);
+        }, 1000);
     }
 });
+
+
