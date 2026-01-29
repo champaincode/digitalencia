@@ -124,6 +124,41 @@ const server = http.createServer((req, res) => {
           max_tokens: requestData.max_tokens || 300,
         };
 
+        // Inject Knowledge Base
+        try {
+          const knowledgeDir = path.join(__dirname, "knowledge");
+          if (fs.existsSync(knowledgeDir)) {
+            let knowledgeContent = "";
+            const files = fs.readdirSync(knowledgeDir);
+            
+            files.forEach(file => {
+              const ext = path.extname(file).toLowerCase();
+              if (['.md', '.txt', '.json'].includes(ext)) {
+                 try {
+                   const content = fs.readFileSync(path.join(knowledgeDir, file), 'utf8');
+                   knowledgeContent += `\n\n--- INFORMACIÓN DE ARCHIVO: ${file} ---\n${content}`;
+                 } catch (e) {
+                   console.error(`Error leyendo ${file}:`, e);
+                 }
+              }
+            });
+
+            if (knowledgeContent) {
+              const systemMessage = openAIData.messages.find(m => m.role === 'system');
+              if (systemMessage) {
+                systemMessage.content += "\n\n BASE DE CONOCIMIENTO ADICIONAL:" + knowledgeContent;
+              } else {
+                openAIData.messages.unshift({
+                  role: 'system',
+                  content: "BASE DE CONOCIMIENTO ADICIONAL:" + knowledgeContent
+                });
+              }
+            }
+          }
+        } catch (err) {
+          console.error("Error procesando knowledge base:", err);
+        }
+
         callOpenAI(openAIData, (error, response) => {
           if (error) {
             console.error("Error calling OpenAI:", error);

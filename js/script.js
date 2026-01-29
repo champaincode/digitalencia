@@ -655,3 +655,31 @@ if (hamburger && mobileMenu) {
     console.log("Cookies rechazadas");
   });
 })();
+
+// ========================================
+// ACTUALIZACIÃ“N AUTOMÃTICA DEL AÃ‘O (Copyright)
+// ========================================
+(function() {
+  const yearSpan = document.getElementById("currentYear");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+})();
+
+// ========================================
+// PRELOADER
+// ========================================
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    if (preloader) {
+        // Esperar un poco para asegurar que la animacin de "llenado" (2.5s) sea visible
+        // o al menos dar 2 segundos de cortesa
+        setTimeout(() => {
+            preloader.classList.add("fade-out");
+            // Remover del DOM despus del fade-out
+            setTimeout(() => {
+                preloader.remove();
+            }, 600);
+        }, 2200);
+    }
+});

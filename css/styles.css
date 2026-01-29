@@ -2628,3 +2628,94 @@
     min-width: 120px;
   }
 }
+/* =========================================
+   PRELOADER
+   ========================================= */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #020617;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+
+.preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-logo-container {
+  position: relative;
+  width: 120px;
+  height: auto;
+}
+
+/* Logo base (fondo oscuro/transparente) */
+.preloader-logo-base {
+  width: 100%;
+  height: auto;
+  opacity: 0.2;
+  filter: grayscale(100%);
+  display: block;
+}
+
+/* Contenedor de recorte para el efecto de llenado */
+.preloader-logo-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0%; /* Empieza vacío */
+  overflow: hidden;
+  animation: fillUp 2.5s ease-in-out forwards;
+}
+
+/* Copia del logo idéntica, a color */
+.preloader-logo-filled-img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  /* Importante: para que coincida en tamaño con el base */
+  max-width: none;
+}
+
+@keyframes fillUp {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+/* Texto del Preloader */
+.preloader {
+  flex-direction: column; /* Para poner el texto debajo */
+  gap: 16px;
+}
+
+.preloader-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #e5e7eb; /* Mismo color que el texto principal */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUpText 0.8s ease-out 0.5s forwards;
+}
+
+@keyframes fadeUpText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
