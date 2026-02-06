@@ -50,28 +50,6 @@
   setInterval(switchWord, 10000);
 })();
 
-// Barra de progreso de scroll
-(function () {
-  const bar = document.getElementById("scrollBar");
-  if (!bar) return;
-
-  function update() {
-    const docHeight = document.documentElement.scrollHeight;
-    const winHeight = window.innerHeight;
-    const maxScroll = docHeight - winHeight;
-    const scrolled = window.scrollY || window.pageYOffset || 0;
-    let pct = 0;
-    if (maxScroll > 0) {
-      pct = (scrolled / maxScroll) * 100;
-    }
-    bar.style.width = pct + "%";
-  }
-
-  window.addEventListener("scroll", update);
-  window.addEventListener("resize", update);
-  update();
-})();
-
 // Animación de entrada de secciones al hacer scroll
 (function () {
   const sections = document.querySelectorAll("section.section");
@@ -97,42 +75,81 @@
   sections.forEach((sec) => observer.observe(sec));
 })();
 
-// Sticky Navbar Logic
+// Glassmorphism Navbar on Scroll
 (function () {
   const nav = document.querySelector(".nav");
   if (!nav) return;
 
-  // Create placeholder
-  const placeholder = document.createElement("div");
-  placeholder.style.display = "none";
-  placeholder.style.visibility = "hidden";
-  nav.parentNode.insertBefore(placeholder, nav);
+  let lastScroll = 0;
+  const scrollThreshold = 50; // Pixels to scroll before activating effect
 
-  function updateSticky() {
-    if (window.scrollY > 80) {
-      // Threshold
-      if (!nav.classList.contains("sticky-active")) {
-        // Calculate height including margin to prevent jump
-        const height = nav.offsetHeight;
-        const style = getComputedStyle(nav);
-        const margin = parseInt(style.marginBottom || 0);
+  function handleScroll() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        placeholder.style.height = height + margin + "px";
-        placeholder.style.display = "block";
-
-        nav.classList.add("sticky-active");
-      }
+    if (currentScroll > scrollThreshold) {
+      nav.classList.add("scrolled");
     } else {
-      if (nav.classList.contains("sticky-active")) {
-        nav.classList.remove("sticky-active");
-        placeholder.style.display = "none";
-      }
+      nav.classList.remove("scrolled");
     }
+
+    lastScroll = currentScroll;
   }
 
-  window.addEventListener("scroll", updateSticky);
-  // Run once on load just in case
-  updateSticky();
+  // Use requestAnimationFrame for smooth performance
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        handleScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Run once on load
+  handleScroll();
+})();
+
+// Smooth Scroll for Navigation Links
+(function () {
+  const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      
+      // Only handle anchor links (starting with #)
+      if (!href || !href.startsWith('#')) return;
+      
+      e.preventDefault();
+      
+      const targetId = href.substring(1);
+      
+      // Special handling for "inicio" - scroll to top
+      if (targetId === 'inicio') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        return;
+      }
+      
+      // For other sections, scroll with offset for navbar
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const navHeight = document.querySelector('.nav')?.offsetHeight || 80;
+        const offset = navHeight + 20; // navbar height + some padding
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 })();
 
 // Efecto 3D interactivo en el panel del hero
@@ -672,15 +689,13 @@ if (hamburger && mobileMenu) {
 window.addEventListener("load", () => {
     const preloader = document.getElementById("preloader");
     if (preloader) {
-        // Esperar 1 segundo para visualización óptima
+        // Esperar 0.3 segundos para visualización óptima
         setTimeout(() => {
             preloader.classList.add("fade-out");
-            // Remover del DOM despus del fade-out
+            // Remover del DOM después del fade-out
             setTimeout(() => {
                 preloader.remove();
             }, 600);
-        }, 1000);
+        }, 300);
     }
 });
-
-

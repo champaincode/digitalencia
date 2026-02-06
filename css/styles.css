@@ -1,3 +1,6 @@
+  html {
+      scroll-behavior: smooth;
+    }
 :root {
       --primary: #0f172a;
       --primary2: #1d3557;
@@ -22,21 +25,19 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  
 
     body {
       margin: 0;
       font-family: "Montserrat", sans-serif;
       color: var(--text-main);
-      background: radial-gradient(circle at top left, #020617 0, #020617 45%);
+      background: #020617;
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Fondo global con cuadrícula y niebla animada */
+    /* Fondo global con cuadrícula sutil */
     body::before {
       content: "";
       position: fixed;
@@ -52,33 +53,6 @@
       z-index: -3;
     }
 
-    @keyframes bgDrift {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-
-      50% {
-        transform: translate3d(-60px, 30px, 0) scale(1.07);
-      }
-
-      100% {
-        transform: translate3d(0, 0, 0) scale(1);
-      }
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 10% 0, rgba(56, 189, 248, 0.22), transparent 60%),
-        radial-gradient(circle at 90% 100%, rgba(236, 72, 153, 0.24), transparent 60%);
-      opacity: 0.75;
-      pointer-events: none;
-      z-index: -4;
-      animation: bgDrift 40s ease-in-out infinite;
-    }
-
     /* MARCO NEÓN GENERAL (tipo LED alrededor de toda la web) */
     .page-frame {
       position: relative;
@@ -87,15 +61,15 @@
       border-radius: 36px;
       padding: 1px;
       background: conic-gradient(from 120deg,
-          #22d3ee,
-          #0f766e,
-          #6366f1,
-          #ec4899,
-          #22d3ee);
+          #1e293b,
+          #0f172a,
+          #1e293b,
+          #334155,
+          #1e293b);
       box-shadow:
-        0 0 22px rgba(34, 197, 94, 0.4),
-        0 0 40px rgba(14, 165, 233, 0.4);
-      overflow: hidden;
+        0 0 22px rgba(30, 41, 59, 0.4),
+        0 0 40px rgba(15, 23, 42, 0.4);
+      overflow: clip;
     }
 
     @keyframes borderSpin {
@@ -129,6 +103,20 @@
       z-index: -1;
     }
 
+    /* Custom Border Color for Large Screens (>1200px) */
+    @media (min-width: 1201px) {
+      .page-frame {
+        background: #1e293b; /* Dark neutral instead of bright cyan */
+        box-shadow: 0 0 30px rgba(30, 41, 59, 0.3);
+      }
+      
+      /* Disable color shifting animation to keep the requested color stable */
+      .page-frame::before {
+        animation: none;
+        opacity: 0.6;
+      }
+    }
+
     .page-inner {
       border-radius: 34px;
       background: radial-gradient(circle at top left,
@@ -136,64 +124,17 @@
           rgba(15, 23, 42, 0.96));
       padding: 40px 26px 12px;
       position: relative;
-      overflow: hidden;
+      will-change: transform;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* Barrido de luz cinematográfico dentro del contenedor */
-    .page-inner::after {
-      content: "";
-      position: absolute;
-      left: -20%;
-      right: -20%;
-      top: -40%;
-      height: 40%;
-      background: linear-gradient(to bottom,
-          transparent,
-          rgba(56, 189, 248, 0.18),
-          transparent);
-      mix-blend-mode: screen;
-      opacity: 0.9;
-      pointer-events: none;
-      animation: scanDown 16s linear infinite;
-    }
 
-    @keyframes scanDown {
-      0% {
-        transform: translateY(-120%);
-      }
-
-      100% {
-        transform: translateY(260%);
-      }
-    }
 
     @media (max-width: 900px) {
       .page-inner {
         padding: 28px 20px 10px;
       }
-    }
-
-    /* Barra de progreso de scroll neon */
-    .scroll-progress {
-      position: absolute;
-      left: 26px;
-      right: 26px;
-      top: 16px;
-      height: 3px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 10;
-      box-shadow: 0 0 14px rgba(15, 23, 42, 0.9);
-    }
-
-    .scroll-progress-inner {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #22d3ee, #0f766e, #fb7185);
-      box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
-      transform-origin: left center;
     }
 
     /* Partículas flotando (suaves) */
@@ -292,40 +233,33 @@
     }
 
     /* NAVBAR FUTURISTA */
+    /* Optimized: Simplificar sombras y añadir will-change */
     @keyframes neonPulseSoft {
       0% {
-        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.95);
+        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.5);
       }
 
       50% {
-        box-shadow:
-          0 20px 40px rgba(37, 99, 235, 0.7),
-          0 0 20px rgba(56, 189, 248, 0.8);
+        box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
       }
 
       100% {
-        box-shadow: 0 14px 30px rgba(15, 23, 42, 0.95);
+        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.5);
       }
     }
 
 
     @keyframes breathGlow {
       0% {
-        box-shadow:
-          0 12px 26px rgba(34, 197, 94, 0.4),
-          0 0 14px rgba(190, 242, 100, 0.7);
+        box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
       }
 
       50% {
-        box-shadow:
-          0 18px 40px rgba(34, 197, 94, 0.9),
-          0 0 18px rgba(190, 242, 100, 1);
+        box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
       }
 
       100% {
-        box-shadow:
-          0 12px 26px rgba(34, 197, 94, 0.4),
-          0 0 14px rgba(190, 242, 100, 0.7);
+        box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
       }
     }
 
@@ -334,19 +268,33 @@
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 12px 22px;
+      padding: 18px 32px;
       border-radius: 999px;
-      background: radial-gradient(circle at top left,
-          rgba(59, 130, 246, 0.7),
-          transparent 60%),
-        rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: transparent;
+      border: 1px solid transparent;
       margin-bottom: 64px;
-      animation: neonPulseSoft 20s ease-in-out infinite;
-      position: relative;
-      z-index: 100;
+      position: sticky;
+      top: 20px;
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform, background-color, padding;
+    }
+
+    /* Navbar scrolled state - glassmorphism effect */
+    .nav.scrolled {
+      padding: 12px 28px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.15);
+    }
+
+    /* Fallback for browsers without backdrop-filter support */
+    @supports not (backdrop-filter: blur(20px)) {
+      .nav.scrolled {
+        background: rgba(15, 23, 42, 0.95);
+      }
     }
 
     .nav-logo {
@@ -396,14 +344,30 @@
       font-weight: 500;
       padding: 7px 14px;
       border-radius: 999px;
-      transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+      transition: color 0.2s ease;
       white-space: nowrap;
+      position: relative;
+    }
+
+    /* Animated underline from center */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #22d3ee, #0f766e);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-links a:hover {
       color: #e5e7eb;
-      background: rgba(148, 163, 184, 0.15);
-      transform: translateY(-1px);
+    }
+
+    .nav-links a:hover::after {
+      width: calc(100% - 28px);
     }
 
     .nav-cta {
@@ -514,7 +478,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 25px;
-        padding: 80px 30px 30px;
+        padding: 20px 30px 30px;
 
         position: fixed;
         top: 0;
@@ -583,10 +547,11 @@
     }
 
     .hero-copy h1 {
-      font-size: 3.4rem;
+      /* Responsive: Fluid Typography */
+      font-size: clamp(2.5rem, 5vw + 1rem, 4.2rem);
       margin: 0 0 18px;
-      letter-spacing: 0.06em;
-      line-height: 1.15;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
     }
 
     @media (max-width: 640px) {
@@ -597,10 +562,11 @@
 
     .hero-copy p {
       margin: 10px 0 26px;
-      font-size: 1.02rem;
+      /* Responsive: Fluid Typography */
+      font-size: clamp(1rem, 2vw + 0.5rem, 1.15rem);
       color: var(--text-muted);
-      max-width: 540px;
-      line-height: 1.7;
+      max-width: 580px;
+      line-height: 1.6;
     }
 
     .hero-pill {
@@ -1022,10 +988,11 @@
     }
 
     section h2 {
-      font-size: 2.3rem;
-      margin-bottom: 28px;
+      /* Responsive: Fluid Typography for section headers */
+      font-size: clamp(1.8rem, 4vw + 1rem, 2.6rem);
+      margin-bottom: 32px;
       color: #e5e7eb;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
@@ -1056,9 +1023,18 @@
 
     .services {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 26px 32px;
+      /* Desktop: 4 columns as requested */
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 26px 20px;
       margin-top: 32px;
+    }
+
+    /* Fix for Hosting Section (2 items) */
+    .launch-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* Microanimaciones flotantes en las tarjetas de servicios */
@@ -1191,10 +1167,36 @@
       }
     }
 
-    /* RESPONSIVE SERVICIOS */
-    @media (max-width: 800px) {
-      .services {
+    /* RESPONSIVE LAYOUTS */
+    
+    /* Tablet (481px - 1024px): 2 columns */
+    @media (max-width: 1024px) {
+      .services,
+      .sectors-grid,
+      .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+    }
+
+    /* Mobile (< 480px): 1 column forced */
+    @media (max-width: 480px) {
+      .services,
+      .sectors-grid,
+      .pricing-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .cta-button, 
+      .nav-cta,
+      .form-submit button {
+        width: 100%;
+        text-align: center;
+        display: block;
+      }
+    
+      .pricing-card, .service-card, .sector-card {
+         padding: 20px 16px; 
       }
     }
 
@@ -2207,7 +2209,7 @@
     .launch-header {
       max-width: 720px;
       margin: 0 auto 32px auto;
-      text-align: left;
+      text-align: center;
     }
 
     .launch-header h2 {
@@ -2398,121 +2400,6 @@
   text-decoration: none;
 }
 
-
-/* ========================================
-   BANNER DE COOKIES RGPD
-   ======================================== */
-
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: radial-gradient(circle at top left,
-      rgba(56, 189, 248, 0.25),
-      transparent 60%),
-    rgba(15, 23, 42, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(148, 163, 184, 0.6);
-  box-shadow: 0 -8px 32px rgba(15, 23, 42, 0.9);
-  padding: 20px;
-  z-index: 9999;
-  transform: translateY(100%);
-  transition: transform 0.4s ease-out;
-}
-
-.cookie-banner.show {
-  transform: translateY(0);
-}
-
-.cookie-banner-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.cookie-banner-text {
-  flex: 1;
-  min-width: 300px;
-}
-
-.cookie-banner-text p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--text-main);
-  line-height: 1.6;
-}
-
-.cookie-link {
-  color: var(--accent);
-  text-decoration: underline;
-  transition: color 0.2s ease;
-}
-
-.cookie-link:hover {
-  color: var(--accent4);
-}
-
-.cookie-banner-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.cookie-btn {
-  padding: 10px 24px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-  font-family: inherit;
-}
-
-.cookie-btn-accept {
-  background: linear-gradient(135deg, #22d3ee, #fbbf24);
-  color: #0f172a;
-  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4);
-}
-
-.cookie-btn-accept:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(34, 211, 238, 0.6);
-}
-
-.cookie-btn-reject {
-  background: rgba(148, 163, 184, 0.2);
-  color: var(--text-main);
-  border: 1px solid rgba(148, 163, 184, 0.5);
-}
-
-.cookie-btn-reject:hover {
-  background: rgba(148, 163, 184, 0.3);
-  border-color: rgba(148, 163, 184, 0.7);
-}
-
-@media (max-width: 768px) {
-  .cookie-banner-content {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
-  }
-
-  .cookie-banner-actions {
-    justify-content: center;
-  }
-
-  .cookie-btn {
-    flex: 1;
-    min-width: 120px;
-  }
-}
 
 /* ========================================
    BANNER DE COOKIES RGPD

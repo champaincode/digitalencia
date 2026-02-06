@@ -17,22 +17,25 @@
   <meta name="geo.position" content="39.4699;-0.3763" />
   <meta name="ICBM" content="39.4699, -0.3763" />
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://digitalencia.es/" />
-  <meta property="og:title" content="Digitalencia - Transformación digital para empresas" />
-  <meta property="og:description" content="Transformamos tu negocio en una empresa digital inteligente desde Valencia. Integramos web, automatizaciones e inteligencia artificial para hostelería, comercio y servicios profesionales." />
+  <meta property="og:title" content="Digitalencia - Transformación Digital" />
+  <meta property="og:description" content="Transformamos tu negocio en una empresa digital inteligente" />
   <meta property="og:image" content="https://digitalencia.es/images/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://digitalencia.es/images/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Digitalencia Logo" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:site_name" content="Digitalencia" />
 
-  <!-- Twitter -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://digitalencia.es/" />
-  <meta name="twitter:title" content="Digitalencia - Transformación digital para empresas" />
-  <meta name="twitter:description" content="Transformamos tu negocio en una empresa digital inteligente desde Valencia. Integramos web, automatizaciones e inteligencia artificial." />
+  <meta name="twitter:title" content="Digitalencia - Transformación Digital" />
+  <meta name="twitter:description" content="Transformamos tu negocio en una empresa digital inteligente" />
   <meta name="twitter:image" content="https://digitalencia.es/images/og-image.jpg" />
 
 <link rel="icon" type="image/png" href="favicon/favicon.png">
@@ -193,10 +196,6 @@
 
   <div class="page-frame">
     <div class="page-inner">
-      <!-- Barra de progreso de scroll -->
-      <div class="scroll-progress">
-        <div class="scroll-progress-inner" id="scrollBar"></div>
-      </div>
 
       <!-- Partículas extra móviles (suaves) -->
       <div class="particles">
@@ -206,43 +205,41 @@
       </div>
 
       <!-- HERO / NAV -->
+      <nav class="nav">
+        <div class="nav-logo">
+          <div class="nav-logo-bg">
+            <img src="images/logo.png" class="nav-logo-img" alt="Digitalencia Logo - Transformación Digital Valencia">
+          </div>
+          <span class="nav-logo-text">Digitalencia</span>
+        </div>
+
+        <button class="hamburger" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#sectores">Sectores</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#agenda">Agenda</a></li>
+          <li><a href="#quienes">Quiénes somos</a></li>
+        </ul>
+      </nav>
+
       <header id="inicio">
         <div class="hero-orb"></div>
 
         <div class="hero-inner">
           <!-- NAVBAR -->
-          <nav class="nav">
-            <div class="nav-logo">
-              <div class="nav-logo-bg">
-                <img src="images/logo.png" class="nav-logo-img" alt="Digitalencia Logo - Transformación Digital Valencia">
-              </div>
-              <span class="nav-logo-text">Digitalencia</span>
-            </div>
 
-            <button class="hamburger" aria-label="Menu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-
-            <ul class="nav-links">
-              <li><a href="#inicio">Inicio</a></li>
-              <li><a href="#servicios">Servicios</a></li>
-              <li><a href="#sectores">Sectores</a></li>
-              <li><a href="#planes">Planes</a></li>
-              <li><a href="#contacto">Contacto</a></li>
-              <li><a href="#agenda">Agenda</a></li>
-              <li><a href="#quienes">Quiénes somos</a></li>
-            </ul>
-          </nav>
 
           <!-- HERO CONTENT -->
           <div class="hero-layout">
             <div class="hero-copy">
-              <a href="#lanzamiento-hosting" class="hero-pill hero-pill-launch">
-                <i class="fas fa-rocket"></i>
-                Lanzamiento en enero 2026 · Promociòn Hosting 2026
-              </a>
               <h1>
                 <span class="brand-title">
                   <span id="brandMain" class="brand-flip">Digitalencia</span>
@@ -531,7 +528,7 @@
       <section class="section" id="lanzamiento-hosting">
         <div class="services-wrapper">
           <div class="launch-header">
-            <h2>Hosting web gestionado para tu negocio</h2>
+            <h2>Hosting web gestionado</h2>
             <p>
               Digitalencia arranca el año ofreciendo un servicio de hosting y
               mantenimiento web pensado para restaurantes, hoteles y comercios
@@ -666,9 +663,8 @@
 
             <div class="agenda-widget">
               <!-- Principio del widget integrado de Calendly -->
-              <div class="calendly-inline-widget"
-                data-url="https://calendly.com/edgarlagos-esp/30min?hide_event_type_details=1&hide_gdpr_banner=1"
-                style="min-width:320px;height:700px;"></div>
+              <div class="calendly-inline-widget" data-url="https://calendly.com/edgarlagos-esp/30min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+              <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
               <!-- Final del widget integrado de Calendly -->
             </div>
           </div>
@@ -798,7 +794,7 @@
 
   <!-- Script efecto Digitalencia / Valencia, subrayado, panel 3D, barra scroll, microanimaciones y agente conversacional -->
   <!-- External JavaScript -->
-  <script src="js/script.js?v=2"></script>
+  <script src="js/script.js?v=2" defer></script>
 
 </body>
 
